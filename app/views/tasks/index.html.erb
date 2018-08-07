@@ -1,0 +1,15 @@
+<h1>My tasks</h1>
+
+<% @tasks.each do |task| %>
+  <div class="task-row">
+    <%= link_to "", complete_path(task),
+      method: :post,
+      class: task.completed ? "far fa-check-square" : "far fa-square" %>
+    <a href="/tasks/<%=task.id%>"><%=task.title%></a>
+    <%= link_to "", destroy_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "fas fa-trash-alt" %>
+  </div>
+<% end %>
+<%= link_to "Add a task", new_path, class: "btn btn-primary", id: "add-task" %>
